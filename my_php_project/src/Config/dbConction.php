@@ -6,7 +6,7 @@ class Db {
     private $dbPass  = "root_password";
     private $dbData  = "CareerLink";
 
-    public function __construct (){
+    public function conection(){
         try{
             $conn = new PDO("mysql:host=".$this->dbhost.";dbname=".$this->dbData, $this->dbName,$this->dbPass);
 
