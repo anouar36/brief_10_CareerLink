@@ -33,6 +33,7 @@ class AuthLogin {
             }
         }
         ob_end_flush();
+        .
     }
 }
 
