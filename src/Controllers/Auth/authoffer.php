@@ -26,9 +26,17 @@ class authoffer{
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    
         if($result){
             return $result;
 
+            // $offers = [];
+            // foreach ($result as  $row) {
+                
+            //     $offers[] = new Offer();
+            // }
+
+            // return $offers;
         }else{
             echo'nothiks to desplay';
         }

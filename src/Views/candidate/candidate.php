@@ -1,3 +1,17 @@
+<?php
+  session_start();
+
+
+if (isset($_SESSION['User'])) {
+  echo "<pre>";
+  print_r($_SESSION['User']['id']); // 
+  echo "</pre>";
+} else {
+  echo "no data";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,12 +135,13 @@
 
         <?php
         require_once("../../../vendor/autoload.php");
+      
         use App\Controllers\Auth\authoffer;
-
         $posted = new authoffer();
         $result = $posted->displayOffer();
         if($result){
           foreach($result as $row){
+            
             ?>
             <div class="job-card bg-white shadow-md p-4">
               <div class="flex items-center mb-4">
@@ -138,15 +153,15 @@
               </div>
               <img src="https://intranet.youcode.ma/storage/users/profile/thumbnail/1242-1727859879.JPG" alt="Job 1" class="post-image mb-4">
               <p class="text-gray-600"><?= $row['description'] ?></p>
-              <button class="bg-green-600 text-white px-4 py-2 rounded mt-2">Apply</button>
+              <button class="bg-green-600 text-white px-4 py-2 rounded mt-2"  type="Apply" name="Apply" >Apply</button>
             </div>
+            
             <?php
           }
         } else {
           echo('No posted jobs');
-        }
+        }    
         ?>
-
       </div>
     </section>
   </main>
