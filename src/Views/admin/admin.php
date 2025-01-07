@@ -170,9 +170,9 @@ require_once("../../../vendor/autoload.php");
 
 
 
-                use App\Controllers\Auth\authCandidat;
-                $candidat = new authCandidat();
-                $result = $candidat->displayRow();
+                use App\Classes\Candidat;
+                $candidat = new Candidat('','','','','');
+                $result = $candidat->displayCandidat();
                 if($result){
                     foreach($result as $row){
                         ?>

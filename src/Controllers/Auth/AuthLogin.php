@@ -55,11 +55,7 @@ class AuthLogin {
     }
 
 
-    public function hestorysCandidat(){
-        $candidat = new Candidat ($id,'','','');
-        $condidatDIR =$user->checkIdOfTheCandidt();
-        
-    }
+   
     }
 
 

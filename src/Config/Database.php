@@ -11,7 +11,7 @@ class Database{
    public function connection(){
       
       try{
-         $this->conn = new PDO("mysql:host=172.16.11.162;dbname=CareerLink",'root' , 'anwar36flow');
+         $this->conn = new PDO("mysql:host=192.168.1.159;dbname=CareerLink",'root' , 'anwar36flow');
          return $this->conn;
       }catch(PDOException $e){
          die('Connection failed: ' . $e->getMessage());  // Correct method name

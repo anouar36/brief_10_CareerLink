@@ -3,7 +3,7 @@
         'name' => 'youcode/brief_careerlink',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '17740aa90244f42bf30013331557ca47ebb4ed04',
+        'reference' => 'f5de97b990527d537bd7292c6a34d5817cda54fc',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -67,7 +67,7 @@
         'youcode/brief_careerlink' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '17740aa90244f42bf30013331557ca47ebb4ed04',
+            'reference' => 'f5de97b990527d537bd7292c6a34d5817cda54fc',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

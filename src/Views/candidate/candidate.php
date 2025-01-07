@@ -81,16 +81,15 @@ if (isset($_SESSION['User'])) {
 
       <?php
       require_once("../../../vendor/autoload.php");
-      use App\Classes\Candidat;      
-
-      $displaye = new Candidat($_SESSION['User']['id'],'','','');
-      $row = $displaye->checkIdOfTheCandidt($_SESSION['User']['id']);
+      use App\Classes\Offer;      
+      $displaye = new Offer('','','','','');
+      $row = $displaye->displayOffer($_SESSION['User']['id']);
       if($row){
       foreach($row as $Offer){
         ?>
         <div class="bg-gray-100 shadow-md p-4 mb-4">
-        <h4 class="font-bold text-gray-800"><?=$Offer['candidats.skills']?></h4>
-        <p class="text-gray-600"><?=$Offer['candidats.deplome']?></p>
+        <h4 class="font-bold text-gray-800"><?=$Offer['salary']?></h4>
+        <p class="text-gray-600"><?=$Offer['date']?></p>
       </div>
         <?php
       }
@@ -147,7 +146,7 @@ if (isset($_SESSION['User'])) {
       <?php
          require_once("../../../vendor/autoload.php");
          use App\Controllers\Auth\authoffer;
-         $posted = new authoffer();
+         $posted = new Offer('','','','','');
          $result = $posted->displayOffer();
          if($result){
             foreach($result as $row){
