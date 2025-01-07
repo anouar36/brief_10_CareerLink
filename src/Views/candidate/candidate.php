@@ -1,10 +1,8 @@
 <?php
-  session_start();
-
-
+session_start();
 if (isset($_SESSION['User'])) {
   echo "<pre>";
-  print_r($_SESSION['User']['id']); // 
+  echo ($_SESSION['User']['id']);
   echo "</pre>";
 } else {
   echo "no data";
@@ -80,14 +78,27 @@ if (isset($_SESSION['User'])) {
 
       <!-- Job Application History -->
       <h2 class="text-xl font-bold mb-4 mt-8 text-gray-900">Job Application History</h2>
-      <div class="bg-gray-100 shadow-md p-4 mb-4">
-        <h4 class="font-bold text-gray-800">Applied Job 1</h4>
-        <p class="text-gray-600">Company Name</p>
+
+      <?php
+      require_once("../../../vendor/autoload.php");
+      use App\Classes\Candidat;      
+
+      $displaye = new Candidat($_SESSION['User']['id'],'','','');
+      $row = $displaye->checkIdOfTheCandidt($_SESSION['User']['id']);
+      if($row){
+      foreach($row as $Offer){
+        ?>
+        <div class="bg-gray-100 shadow-md p-4 mb-4">
+        <h4 class="font-bold text-gray-800"><?=$Offer['candidats.skills']?></h4>
+        <p class="text-gray-600"><?=$Offer['candidats.deplome']?></p>
       </div>
-      <div class="bg-gray-100 shadow-md p-4 mb-4">
-        <h4 class="font-bold text-gray-800">Applied Job 2</h4>
-        <p class="text-gray-600">Company Name</p>
-      </div>
+        <?php
+      }
+    }
+      
+      ?>
+      
+      
       <!-- Add more application history cards as needed -->
     </aside>
 
@@ -133,35 +144,32 @@ if (isset($_SESSION['User'])) {
       <h2 class="text-2xl font-bold mb-4 mt-8 text-gray-900">Posted Jobs</h2>
       <div class="grid grid-cols-2 gap-4">
 
-        <?php
-        require_once("../../../vendor/autoload.php");
-      
-        use App\Controllers\Auth\authoffer;
-        $posted = new authoffer();
-        $result = $posted->displayOffer();
-        if($result){
-          foreach($result as $row){
-            
-            ?>
-            <div class="job-card bg-white shadow-md p-4">
-              <div class="flex items-center mb-4">
-                <img src="https://intranet.youcode.ma/storage/users/profile/thumbnail/1242-1727859879.JPG" alt="Company 1" class="company-logo mr-2">
-                <div>
-                  <h4 class="font-bold text-gray-800">Company Name</h4>
-                  <p class="text-gray-600"><?= $row['post'] ?></p>
+      <?php
+         require_once("../../../vendor/autoload.php");
+         use App\Controllers\Auth\authoffer;
+         $posted = new authoffer();
+         $result = $posted->displayOffer();
+         if($result){
+            foreach($result as $row){
+              ?>
+                <div class="job-card bg-white shadow-md p-4">
+                  <div class="flex items-center mb-4">
+                    <img src="https://intranet.youcode.ma/storage/users/profile/thumbnail/1242-1727859879.JPG" alt="Company 1" class="company-logo mr-2">
+                    <div>
+                      <h4 class="font-bold text-gray-800">Company Name</h4>
+                      <p class="text-gray-600"><?= $row['post'] ?></p>
+                    </div>
+                  </div>
+                  <img src="https://intranet.youcode.ma/storage/users/profile/thumbnail/1242-1727859879.JPG" alt="Job 1" class="post-image mb-4">
+                  <p class="text-gray-600"><?= $row['description'] ?></p>
+                  <button class="bg-green-600 text-white px-4 py-2 rounded mt-2"  type="Apply" name="Apply" >Apply</button>
                 </div>
-              </div>
-              <img src="https://intranet.youcode.ma/storage/users/profile/thumbnail/1242-1727859879.JPG" alt="Job 1" class="post-image mb-4">
-              <p class="text-gray-600"><?= $row['description'] ?></p>
-              <button class="bg-green-600 text-white px-4 py-2 rounded mt-2"  type="Apply" name="Apply" >Apply</button>
-            </div>
-            
-            <?php
-          }
-        } else {
-          echo('No posted jobs');
-        }    
-        ?>
+              <?php
+           }
+         }else {
+           echo('No posted jobs');
+          }    
+       ?>
       </div>
     </section>
   </main>

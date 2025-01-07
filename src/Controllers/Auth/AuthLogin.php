@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Controllers\Auth;
+session_start();
 
 
 use App\Classes\Candidat;
@@ -14,7 +14,7 @@ class AuthLogin {
 
     
       public function login($email, $password){
-        $user = new User('','' ,$email,$password,'');
+        $user = new User($id,'' ,$email,$password,'');
         $UserDIR = $user->chekerLogin();
 
         
@@ -51,6 +51,7 @@ class AuthLogin {
             'rolle' => $UserDIR->getrolle(), 
             'id' => $UserDIR->getId(), 
         ];
+        print_r($_SESSION['User']);
     }
 
 
