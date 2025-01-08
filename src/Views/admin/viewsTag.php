@@ -1,3 +1,26 @@
+<?php
+ require_once ('../../../vendor/autoload.php');
+ use App\Controllers\Admin\TagController;
+
+ $tag = new TagController('');
+ $result = $tag->desplayTag();
+ 
+
+
+
+if(isset($_GET['iddelet'])){
+    if(empty($_GET['iddelet'])){
+      echo'DElet is not fende ';
+    }else{
+        $idDel=$_GET['iddelet'];
+        $tag = new TagController('');
+        $Delet = $tag->checkDelet($idDel);
+        
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +47,6 @@
                         <svg class="w-7 h-7 bg-indigo-600 rounded-lg p-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                         <span class="text-2xl font-bold">Better Code</span>
                     </a>
-
                     <!-- SEARCH BAR -->
                     <div class="border-gray-700 py-5 text-white border-b rounded">
                         <div class="relative">
@@ -59,9 +81,12 @@
                                 <a href="#" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                     Categories
                                 </a>
-                                <a href="\src\Views\admin\viewsTag.php" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
+                                
+                                
+                                <a href="\src\Views\admin\formulTages.php" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                     Tages
                                 </a>
+                               
                                 <a href="#" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded">
                                     Instruction
                                 </a>
@@ -156,45 +181,17 @@
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                 <th class="py-3 px-6 text-left">Project</th>
                                 <th class="py-3 px-6 text-left">Client</th>
-                                <th class="py-3 px-6 text-center">Users</th>
-                                <th class="py-3 px-6 text-center">Status</th>
-                                <th class="py-3 px-6 text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600 text-sm">
-
                         <?php
-
-require_once("../../../vendor/autoload.php");
-
-
-
-
-                use App\Classes\Candidat;
-                $candidat = new Candidat('','','','','');
-                $result = $candidat->displayCandidat();
-                if($result){
-                    foreach($result as $row){
-                        ?>
+                        if ($result) {
+                            foreach ($result as $row) {
+                                ?>
 
                                 <tr class="border-b border-gray-200 hover:bg-gray-100">
-                                <td class="py-3 px-6 text-left whitespace-nowrap">
-                                      <?= $row["role"] ?>
-                                    </div>
-                                </td>
-                                <td class="py-3 px-6 text-left">
-                                    <div class="flex items-center">
-                                        <div class="mr-2">
-                                            <img class="w-6 h-6 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg"/>
-                                        </div>
-                                        <span><?= $row["name"] ?></span>
-                                    </div>
-                                </td>
                                 <td class="py-3 px-6 text-center">
-                                <?= $row["skills"] ?>
-                                </td>
-                                <td class="py-3 px-6 text-center">
-                                    <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs"> <?= $row["email"] ?></span>
+                                    <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs"> <?= $row['tag_name'] ?></span>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
@@ -204,33 +201,33 @@ require_once("../../../vendor/autoload.php");
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                             </svg>
                                         </div>
+                                        <a href="/src/Views/admin/modifi.php?id=<?= $row['id'] ?>">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 cursor-pointer cursor-pointer">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                             </svg>
                                         </div>
+                                        </a>
+                                       
+                                        <a href="\src\Views\admin\viewsTag.php?iddelet=<?= $row['id'] ?>">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110 cursor-pointer cursor-pointer">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
                                         </div>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
 
                         
                         <?php
-                        
-                    }
+                            }
+                        } else {
+                            echo ('nothing to display');
+                        }
 
-                }else{
-                    echo('nothing to display');
-                }
-                
-                
-                
-                
-                ?>
+                        ?>
 
 
 

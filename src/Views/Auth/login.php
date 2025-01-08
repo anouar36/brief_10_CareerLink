@@ -1,8 +1,5 @@
 <?php        
-
-
 require_once("../../../vendor/autoload.php");
-
 use App\Controllers\Auth\AuthLogin;
 
 if(isset($_POST["submit"])){

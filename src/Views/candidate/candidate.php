@@ -59,7 +59,7 @@ if (isset($_SESSION['User'])) {
     <div class="container mx-auto flex justify-between items-center p-4">
       <h1 class="text-2xl font-bold text-white">LinkedIn Clone</h1>
       <nav class="space-x-4">
-        <a href="#" class="text-gray-300 hover:text-gray-500">Home</a>
+        <a href="../../Classes/ahmed.php" class="text-gray-300 hover:text-gray-500">ahmed</a>
         <a href="#" class="text-gray-300 hover:text-gray-500">Profile</a>
         <a href="#" class="text-gray-300 hover:text-gray-500">Messages</a>
       </nav>
