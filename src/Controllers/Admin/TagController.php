@@ -12,8 +12,8 @@ class TagController
         $insertTag = new Tag('');
         $result = $insertTag->insertTage($nameTag);
 
-        if ($result) {
-            echo 'Add Tage Successfully';
+        if ($result == true) {
+            header('Location:/src/Views/admin/viewsTag.php');
             return true;
         } else {
             echo ' Not Add Tage Successfully';
@@ -36,6 +36,7 @@ class TagController
     public function  checkeModife($id, $nameTag){
         $modife= new Tag('');
         $modife->modification($id, $nameTag); 
+        $result =$modife->modification($id, $nameTag); 
     }
 
     public function dsplayinInputModifi($id){
@@ -51,7 +52,6 @@ class TagController
     public function checkDelet($idDel){
         $delet= new Tag('');
         $result= $delet->deletTag($idDel);
-
 
     }
 }

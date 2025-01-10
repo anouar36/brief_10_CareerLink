@@ -204,22 +204,10 @@ else{
                         }
 
                         ?>
-
-
-
-
-
-
-                            
-                      
                         </tbody>
                     </table>
                 </div>
-                <!-- END OF TABLE -->
-
-                
             </section>
-            <!-- END OF PAGE CONTENT -->
         </main>
     </div>
 </body>

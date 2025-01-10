@@ -16,16 +16,11 @@ if(isset($_POST["submit"])){
    echo'nothing to commit ';
 else{
     $nameTag = $_POST['nameTag'];
-
     $modife= new TagController();
     $modife->checkeModife($id, $nameTag);
 }
 }
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
