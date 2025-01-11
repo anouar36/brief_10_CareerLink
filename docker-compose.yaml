@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 services:
   mysql:
     image: mysql:8.0
@@ -31,9 +34,31 @@ services:
     container_name: php_container
     restart: always
     volumes:
+<<<<<<< HEAD
       - ./my_php_project:/var/www/html
     ports:
       - "80:80"
 
 volumes:
   mysql_data:
+=======
+      - .:/var/www/html
+    ports:
+      - "80:80"
+      
+  app:
+    image: php:8.2-cli
+    volumes:
+      - .:/app
+    working_dir: /app
+
+  composer:
+    image: composer:latest
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: install  
+
+volumes:
+  mysql_data:
+>>>>>>> develop

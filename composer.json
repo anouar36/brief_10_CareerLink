@@ -1,0 +1,17 @@
+{
+    "name": "youcode/brief_careerlink",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "anouar",
+            "email": "anwar.class36flow@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "*"
+    }
+}
